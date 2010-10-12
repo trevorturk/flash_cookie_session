@@ -1,3 +1,5 @@
+require 'rails'
+
 module FlashCookieSession
   class Railtie < Rails::Railtie
     initializer "flash_cookie_session.initializer" do
