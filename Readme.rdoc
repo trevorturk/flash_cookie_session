@@ -6,7 +6,7 @@ The problem is that Rails uses cookie-based sessions to keep track of the curren
 
 There are many, many blog posts about this: http://www.google.co.uk/search?q=rails+flash+upload
 
-I'm not sure who first figured everything out, so I won't bother trying to credit anyone. Thank you, though, kind person who figured all of this out in the first place. This gem represents a meager attempt to make this all a bit easier to deal with in Rails 3.
+I'm not sure who first figured everything out, so I won't bother trying to credit anyone. Thank you, though, kind person who figured all of this out in the first place. This gem represents a meager attempt to make this all a bit easier to deal with in Rails 3. No need for special routes, no need to manually configure FlashSessionCookieMiddleware, etc.
 
 === Installation
 
@@ -69,7 +69,7 @@ With SWFUpload, the post_params are sent along with the file upload, which would
 
 === Additional info
 
-This is frustrating and annoying stuff, and I'm sorry that we have to deal with it. If you have an idea about how to improve the situation, pull requests that expand on the README and/or Rails 3 gem are more than welcome. 
+This is frustrating and annoying stuff, and I'm sorry that we have to deal with it. If you have an idea about how to improve the situation or example for additional Flash uploaders, pull requests that expand on the README and/or Rails 3 gem are more than welcome.
 
 === License
 
