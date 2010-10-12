@@ -1,5 +1,3 @@
-require 'rack/utils'
-
 module FlashCookieSession
   class Middleware
     def initialize(app, session_key = '_session_id')
@@ -9,8 +7,8 @@ module FlashCookieSession
 
     def call(env)
       if env['HTTP_USER_AGENT'] =~ /^(Adobe|Shockwave) Flash/
-        params = Rack::Utils.parse_query(env['QUERY_STRING'])
-        env['HTTP_COOKIE'] = [ @session_key, params[@session_key] ].join('=').freeze if params[@session_key]
+        req = Rack::Request.new(env)
+        env['HTTP_COOKIE'] = [ @session_key, req.params[@session_key] ].join('=').freeze if req.params[@session_key]
       end
 
       @app.call(env)
