@@ -1,16 +1,14 @@
-== Rails 3 cookie sessions can cooperate with Flash
+=== Rails 3 cookie sessions can cooperate with Flash
 
 This is useful for Flash-based file uploaders (SWFUpload, Uploadify, Plupload, etc)
 
-The problem is that Rails uses cookie-based sessions to keep track of the current_user, etc. You may also have to worry about the +authenticity_token+ being passed around if you're using +protect_from_forgery+ and you'd like to avoid those pesky +ActionController::InvalidAuthenticityToken+ errors.
+The problem is that Rails uses cookie-based sessions to keep track of the current_user, etc. You may also have to worry about the +authenticity_token+ being passed around if you're using +protect_from_forgery+ and you'd like to avoid those pesky +InvalidAuthenticityToken+ errors.
 
-There are many, many blog posts about this:
-
-    http://www.google.co.uk/search?q=rails+flash+upload
+There are many, many blog posts about this: http://www.google.co.uk/search?q=rails+flash+upload
 
 I'm not sure who first figured everything out, so I won't bother trying to credit anyone. Thank you, though, kind person who figured all of this out in the first place. This gem represents a meager attempt to make this all a bit easier to deal with in Rails 3.
 
-== Installation
+=== Installation
 
 1) Add this gem to your Gemfile:
 
@@ -69,8 +67,10 @@ I'm not sure who first figured everything out, so I won't bother trying to credi
 
 With SWFUpload, the post_params are sent along with the file upload, which would be in params[:Filedata] in this example.
 
-3) I think that should do it.
+=== Additional info
 
-== License
+This is frustrating and annoying stuff, and I'm sorry that we have to deal with it. If you have an idea about how to improve the situation, pull requests that expand on the README and/or Rails 3 gem are more than welcome. 
+
+=== License
 
 Released under the MIT License: http://en.wikipedia.org/wiki/MIT_License
