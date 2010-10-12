@@ -6,11 +6,11 @@ Gem::Specification.new do |s|
   s.name        = "flash_cookie_session"
   s.version     = FlashCookieSession::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["TODO: Write your name"]
-  s.email       = ["TODO: Write your email address"]
+  s.authors     = ["Trevor Turk"]
+  s.email       = ["trevorturk@gmail.com"]
   s.homepage    = "http://rubygems.org/gems/flash_cookie_session"
-  s.summary     = %q{TODO: Write a gem summary}
-  s.description = %q{TODO: Write a gem description}
+  s.summary     = %q{Rails 3 cookie sessions can cooperate with Flash}
+  s.description = %q{Useful for Flash-based file uploaders (SWFUpload, Uploadify, Plupload, etc)}
 
   s.rubyforge_project = "flash_cookie_session"
 
@@ -18,4 +18,6 @@ Gem::Specification.new do |s|
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
+  
+  s.add_dependency("rails", ["~> 3.0"])
 end

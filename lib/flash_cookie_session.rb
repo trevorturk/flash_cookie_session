@@ -1,3 +1,3 @@
-module FlashCookieSession
-  # Your code goes here...
-end
+require 'rails'
+require 'flash_cookie_session/middleware.rb'
+require 'flash_cookie_session/railtie.rb'
