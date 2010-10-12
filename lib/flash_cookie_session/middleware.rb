@@ -9,8 +9,8 @@ module FlashCookieSession
 
     def call(env)
       if env['HTTP_USER_AGENT'] =~ /^(Adobe|Shockwave) Flash/
-        req = Rack::Request.new(env)
-        env['HTTP_COOKIE'] = [ @session_key, req.params[@session_key] ].join('=').freeze if req.params[@session_key]
+        params = Rack::Utils.parse_query(env['QUERY_STRING'])
+        env['HTTP_COOKIE'] = [ @session_key, params[@session_key] ].join('=').freeze if params[@session_key]
       end
 
       @app.call(env)
