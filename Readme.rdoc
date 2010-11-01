@@ -38,6 +38,7 @@ I'm not sure who first figured everything out, so I won't bother trying to credi
       file_queue_limit : 20,
 
       file_queued_handler : fileQueued,
+      file_queue_error_handler : fileQueueError,
       upload_start_handler : uploadStart,
       upload_progress_handler : uploadProgress,
       upload_success_handler : uploadSuccess,
@@ -45,24 +46,32 @@ I'm not sure who first figured everything out, so I won't bother trying to credi
     });
 
     function fileQueued(file){
-      // alert('queued');
       this.startUpload();
     }
 
-    function uploadStart(file){
-      // alert('start');
+    function fileQueueError(file, errorCode, message) {
+      alert(message);
+    }
+
+    function uploadStart(file) {
+      alert('uploadStart');
     }
 
     function uploadProgress(file, bytesLoaded, bytesTotal){
+      alert('uploadProgress');
     }
 
     function uploadSuccess(file, serverData){
-      // alert('success');
+      alert('uploadSuccess');
     }
 
     function uploadComplete(file){
-      // alert('complete');
-      this.startUpload();
+      if (this.getStats().files_queued > 0) {
+        this.startUpload();
+      }
+      else {
+        alert('uploadComplete');
+      }
     }
 
 With SWFUpload, the post_params are sent along with the file upload, which would be in params[:Filedata] in this example.
