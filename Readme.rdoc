@@ -76,6 +76,8 @@ I'm not sure who first figured everything out, so I won't bother trying to credi
 
 With SWFUpload, the post_params are sent along with the file upload, which would be in params[:Filedata] in this example.
 
+*Note*: If you are getting a "406 Not Acceptable" error on trying to upload, you might need to setup an extra set of params. Try adding '+_http_accept+': '+text+/+html+' (or any other appropriate media type that your respond_to block in your controller action needs - 'text/javascript' for format.js, etc) to post_params above.
+
 === Additional info
 
 This is frustrating and annoying stuff, and I'm sorry that we have to deal with it. If you have an idea about how to improve the situation or example for additional Flash uploaders, pull requests that expand on the README and/or Rails 3 gem are more than welcome.
