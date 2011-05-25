@@ -76,7 +76,26 @@ I'm not sure who first figured everything out, so I won't bother trying to credi
 
 With SWFUpload, the post_params are sent along with the file upload, which would be in params[:Filedata] in this example.
 
-*Note*: If you are getting a "406 Not Acceptable" error on trying to upload, you might need to setup an extra set of params. Try adding '+_http_accept+': '+text+/+html+' (or any other appropriate media type that your respond_to block in your controller action needs - 'text/javascript' for format.js, etc) to post_params above.
+Let's break this down a little so you understand it better:
+
+    post_params : {
+      "<%= key = Rails.application.config.session_options[:key] %>" : "<%= cookies[key] %>",
+      "<%= request_forgery_protection_token %>" : "<%= form_authenticity_token %>",
+    },
+    
+The first key is your cookie session key which is passed along with every request when the user changes pages. If the server does not know about this session key then it cannot authenticate the user properly and therefore thinks you are not logged in. Since Flash has it's own set of cookies separate from the browser and effectively acts as it's own web browser when making requests to your app, we need to explicitly pass along the web browsersession key along with the Flash request so that the Rails server has all the info it needs to authenticate the user.
+
+The second key is the standard authentication token that is passed along to prevent cross-site request forgeries.  
+
+=== Optional Parameters
+
+- If you are using a "remember" cookie to keep a user logged in any time they come back to your website, you can pass this in through the params.  If this does not get passed in, the server will not be able to authenticate the user properly and you will be scratching your head again wondering what went wrong:
+    
+    "remember_token" : "<%= cookies[:remember_token] %>"
+    
+The key has to be named `remember_token` but your cookie may be named something other than `:remember_token` so change that accordingly based on your implementation.
+    
+- If you are getting a "406 Not Acceptable" error on trying to upload, you might need to setup an extra set of params. Try adding '+_http_accept+': '+text+/+html+' (or any other appropriate media type that your respond_to block in your controller action needs - 'text/javascript' for format.js, etc) to post_params above.
 
 === Additional info
 
