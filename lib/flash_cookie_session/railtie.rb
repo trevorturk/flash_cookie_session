@@ -13,9 +13,11 @@ module FlashCookieSession
       end
 
       session_store = Rails.application.config.session_store
-      session_key = Rails.application.config.session_options[:key]
 
-      raise 'FlashCookieSession config missing' unless session_store && session_key
+      raise 'FlashCookieSession requires session store to be specified' unless session_store
+
+      session_key = Rails.application.config.session_options[:key]
+      session_key = '_session_id' if session_key.blank?
 
       Rails.application.middleware.insert_before(
         session_store,
