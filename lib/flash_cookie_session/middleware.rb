@@ -1,12 +1,17 @@
 module FlashCookieSession
   class Middleware
+    USER_AGENT_MATCHER = /^(Adobe|Shockwave) Flash/.freeze
+    HTTP_REFERER_MATCHER = /\.swf$/.freeze
+
     def initialize(app, session_key = Rails.application.config.session_options[:key])
       @app = app
       @session_key = session_key
     end
 
     def call(env)
-      if env['HTTP_USER_AGENT'] =~ /^(Adobe|Shockwave) Flash/ or env['HTTP_REFERER'] =~ /.swf/
+      referrer = env['HTTP_REFERER'].to_s.split('?').first
+
+      if env['HTTP_USER_AGENT'] =~ USER_AGENT_MATCHER || referrer =~ HTTP_REFERER_MATCHER
         req = Rack::Request.new(env)
         the_session_key = [ @session_key, req.params[@session_key] ].join('=').freeze if req.params[@session_key]
 
