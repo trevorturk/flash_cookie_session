@@ -12,7 +12,7 @@ I'm not sure who first figured everything out, so I won't bother trying to credi
 
 1) Add this gem to your Gemfile:
 
-    gem 'flash_cookie_session'
+    gem 'flash_cookie_session', github: 'trevorturk/flash_cookie_session'
 
 2) Convince your Flash uploader to pass in the additional params necessary. This is going to be different given the Flash uploader you're using, but see the provided SWFUpload example below, and note the +post_params+ section:
 
