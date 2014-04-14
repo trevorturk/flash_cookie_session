@@ -23,7 +23,7 @@ module FlashCookieSession
 
         cookie_with_remember_token_and_session_key = [ the_remember_token, the_session_key ].compact.join('\;').freeze
 
-        env['HTTP_COOKIE'] = cookie_with_remember_token_and_session_key
+        env['HTTP_COOKIE'] = cookie_with_remember_token_and_session_key if env['HTTP_COOKIE'].blank?
         env['HTTP_ACCEPT'] = "#{req.params['_http_accept']}".freeze if req.params['_http_accept']
       end
 
