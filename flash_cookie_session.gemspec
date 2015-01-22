@@ -11,6 +11,7 @@ Gem::Specification.new do |s|
   s.homepage    = "http://rubygems.org/gems/flash_cookie_session"
   s.summary     = %q{Rails 3 cookie sessions can cooperate with Flash}
   s.description = %q{Useful for Flash-based file uploaders (SWFUpload, Uploadify, Plupload, etc)}
+  s.license     = 'MIT'
 
   s.rubyforge_project = "flash_cookie_session"
 
