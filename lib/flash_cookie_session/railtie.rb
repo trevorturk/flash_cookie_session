@@ -21,7 +21,7 @@ module FlashCookieSession
 
       Rails.application.middleware.insert_before(
         session_store,
-        "FlashCookieSession::Middleware",
+        FlashCookieSession::Middleware,
         session_key
       )
     end
